@@ -107,6 +107,14 @@
 				<div class="bottom-nav-item"><i class="iconify bottom-nav-icon" data-icon="mdi-music-box-multiple"></i><br><span>Library</span></div>
 			</div>
 		</div>
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			const socket = io();
+
+			socket.on('clients', function(msg){
+       			console.log(msg)
+    		});
+		</script>
 		<script src="/js/pwa.js"></script>
 		<script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
 	</body>

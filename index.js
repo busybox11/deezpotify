@@ -12,6 +12,7 @@ const cert = fs.readFileSync('./certs/localhost.crt')
 
 const app = express()
 const server = https.createServer({key: key, cert: cert }, app)
+const io = require('socket.io')(server)
 
 app.use((req, res, next) => {
 	if (!req.secure) {
@@ -43,6 +44,15 @@ app.get('/auth/spotify', function(req, res) {
 		})
 	}
 })
+
+io.on('connection', (socket) =>{
+	console.log(`Connected to client ${socket.id}`)
+	io.emit('clients', JSON.stringify({type: "newClient"}))
+})
+
+socket.on("disconnect", (reason) => {
+	console.log('Client disconnected')
+});
 
 app.listen(httpPort, function () {
 	console.log(`Listening on port ${httpPort}!`)
