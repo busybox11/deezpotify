@@ -16,10 +16,12 @@
 	margin-right: .5rem;
 }
 
-#bottomnav {
+#bottom-navs {
 	position: sticky;
 	bottom: 0;
+}
 
+#bottomnav {
 	background: #1A1A1A;
 
 	display: flex;
@@ -40,5 +42,50 @@
 .bottom-nav-item.selected { color: white; }
 
 .bottom-nav-icon {
-	font-size: 1.5rem;
+	font-size: 1.75rem;
+}
+
+.bottom-nav-item > span {
+	margin-top: .25rem;
+	font-size: 0.75rem;
+}
+
+#playing {
+	background: #1A1A1A;
+	display: flex;
+
+	border-bottom: 1px solid #FFFFFF30;
+}
+
+#playing-img {
+	height: 4rem;
+	width: 4rem;
+
+	object-fit: cover;
+}
+
+#playing-track-info {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin: auto 1rem;
+}
+
+#playing-track-name {
+	font-size: 1.2rem;
+}
+
+#playing-track-artist {
+	color: #CCCCCC;
+
+	font-size: 1rem;
+}
+
+.playing-nav-icon {
+	margin: auto 1rem auto 0;
+	font-size: 3rem;
+}
+
+.playing-nav-saved {
+	color: #1db954;
 }

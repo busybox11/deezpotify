@@ -9,6 +9,9 @@
 		<link rel="stylesheet" href="/css/app.css">
 		<link rel="stylesheet" href="/css/typo.css">
 		<link rel="stylesheet" href="/css/utils.css">
+
+		<link href="//fonts.cdnfonts.com/css/circular-std-book" rel="stylesheet">
+
 		<link rel="manifest" href="/pwa.webmanifest">
 		<meta name="theme-color" content="#764ABC"/>
 		<link rel="apple-touch-icon" href="/files/pwa-icon-ios.webp">
@@ -84,11 +87,21 @@
 				</div>
 			</div>
 		</div>
-		<div id="playing"></div>
-		<div id="bottomnav">
-			<div class="bottom-nav-item selected"><i class="iconify bottom-nav-icon" data-icon="mdi-home"></i><br><span>Home</span></div>
-			<div class="bottom-nav-item"><i class="iconify bottom-nav-icon" data-icon="mdi-search"></i><br><span>Search</span></div>
-			<div class="bottom-nav-item"><i class="iconify bottom-nav-icon" data-icon="mdi-music-box-multiple"></i><br><span>Library</span></div>
+		<div id="bottom-navs">
+			<div id="playing">
+				<img id="playing-img" src="https://i.scdn.co/image/ab67616d00001e028c39980f387f7ab0b5e85c80">
+				<div id="playing-track-info">
+					<span id="playing-track-name">Bored</span>
+					<span id="playing-track-artist">Thomas Headon</span>
+				</div>
+				<i class="iconify playing-nav-icon playing-nav-saved" id="playing-nav-save" data-icon="mdi-heart"></i>
+				<i class="iconify playing-nav-icon" id="playing-nav-playpause" data-icon="mdi-pause"></i>
+			</div>
+			<div id="bottomnav">
+				<div class="bottom-nav-item selected"><i class="iconify bottom-nav-icon" data-icon="mdi-home"></i><br><span>Home</span></div>
+				<div class="bottom-nav-item"><i class="iconify bottom-nav-icon" data-icon="mdi-search"></i><br><span>Search</span></div>
+				<div class="bottom-nav-item"><i class="iconify bottom-nav-icon" data-icon="mdi-music-box-multiple"></i><br><span>Library</span></div>
+			</div>
 		</div>
 		<script src="/js/pwa.js"></script>
 		<script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
