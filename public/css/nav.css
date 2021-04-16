@@ -1,5 +1,5 @@
 #topnav {
-	position: absolute;
+	position: sticky;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -15,7 +15,7 @@
 }
 
 #bottomnav {
-	position: absolute;
+	position: sticky;
 	bottom: 0;
 
 	background: #1A1A1A;

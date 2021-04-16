@@ -16,7 +16,7 @@ html, body {
 
 #app {
 	padding: 1rem;
-	padding-top: 5rem;
+	padding-top: 3rem;
 
 	z-index: 2;
 }
@@ -87,4 +87,64 @@ html, body {
 		width: 12rem;
 		justify-content: center;
 	}
+}
+
+.app-home-header {
+	margin-bottom: 3rem;
+}
+
+#app-home-clients {
+	display: flex;
+	align-items: center;
+}
+
+#app-home-clients-imgs {
+	margin: 0 .25rem;
+}
+
+.app-home-client-img {
+	height: 1.5rem;
+	width: 1.5rem;
+	margin-left: -0.25rem;
+
+	border-radius: 100%;
+}
+
+.app-home-section {
+	margin-bottom: 1rem;
+}
+
+.app-home-section-scroll {
+	margin: 0 -1rem;
+	padding: 0 1rem 1rem 1rem;
+	overflow: auto;
+	display: flex;
+}
+
+.app-home-section-title {
+	margin-bottom: 1rem;
+}
+
+.app-home-item {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+
+	width: 11rem;
+	padding-right: 1rem;
+}
+
+.app-home-item-img {
+	height: 10rem;
+	width: 10rem;
+	margin-bottom: .5rem;
+	object-fit: cover;
+}
+
+.app-home-item-name {
+	width: 100%;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }

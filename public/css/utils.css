@@ -1,3 +1,10 @@
 .mx-auto { margin: 0 auto; }
 .ml-auto { margin-left: auto; }
 .mr-auto { margin-right: auto; }
+
+.album-img,
+.playlist-img { 
+	border-radius: 0;
+}
+
+.artist-img { border-radius: 100%; }
