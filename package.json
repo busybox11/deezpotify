@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/busybox11/deezpotify#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "spotify-web-api-node": "^5.0.2"
   }
 }

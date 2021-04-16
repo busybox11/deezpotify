@@ -5,12 +5,29 @@
 
 		<title>Deezpotify</title>
 
+		<link rel="stylesheet" href="/css/nav.css">
+		<link rel="stylesheet" href="/css/app.css">
+		<link rel="stylesheet" href="/css/typo.css">
+		<link rel="stylesheet" href="/css/utils.css">
 		<link rel="manifest" href="/pwa.webmanifest">
 		<meta name="theme-color" content="#764ABC"/>
 		<link rel="apple-touch-icon" href="/files/pwa-icon-ios.webp">
 	</head>
 	<body>
-		<h1>Hello World!</h1>
-		<script src="/js/pwa.js"></script>
+		<nav id="topnav">
+			<span id="navbar-title">Deezpotify</span>
+		</nav>
+		<div id="app">
+			<div class="stylish-app-bg-thing"></div>
+			<div class="app-home-login-header">
+				<h1>Welcome to Deezpotify</h1>
+				<span class="text-muted">Please login to Spotify or Deezer to use this app.</span>
+			</div>
+			<div class="app-home-login-buttons">
+				<a class="app-home-login-btn app-home-login-btn-spotify" href="/auth/spotify"><i class="iconify" data-icon="mdi-spotify"></i><span>Login with Spotify</span></a>
+				<a class="app-home-login-btn app-home-login-btn-deezer" href="#"><i class="iconify"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="white"><path d="M18.81 4.16v3.03H24V4.16h-5.19zM6.27 8.38v3.027h5.189V8.38h-5.19zm12.54 0v3.027H24V8.38h-5.19zM6.27 12.594v3.027h5.189v-3.027h-5.19zm6.271 0v3.027h5.19v-3.027h-5.19zm6.27 0v3.027H24v-3.027h-5.19zM0 16.81v3.029h5.19v-3.03H0zm6.27 0v3.029h5.189v-3.03h-5.19zm6.271 0v3.029h5.19v-3.03h-5.19zm6.27 0v3.029H24v-3.03h-5.19Z"/></svg></i><span>Login with Deezer</span></a>
+			</div>
+		</div>
+		<script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
 	</body>
 </html>

@@ -1,0 +1,42 @@
+#topnav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+
+	padding: .75rem 1rem;
+	font-size: 1.3rem;
+
+	background: transparent;
+}
+
+.navbar-menu-icon {
+	margin-right: .5rem;
+}
+
+#bottomnav {
+	position: absolute;
+	bottom: 0;
+
+	background: #1A1A1A;
+
+	display: flex;
+	width: 100%;
+	padding: 0 .25rem;
+}
+
+.bottom-nav-item {
+	width: 100%;
+	padding: .5rem .25rem;
+
+	color: #bdbdbd;
+	transition: color .15s;
+
+	text-align: center;
+}
+
+.bottom-nav-item.selected { color: white; }
+
+.bottom-nav-icon {
+	font-size: 1.5rem;
+}

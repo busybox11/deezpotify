@@ -1,0 +1,90 @@
+html { background: black; }
+
+html, body {
+	margin: 0;
+	height: 100%;
+	font-family: sans-serif;
+	color: white;
+}
+
+* {
+	box-sizing: border-box;
+
+	margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+#app {
+	padding: 1rem;
+	padding-top: 5rem;
+
+	z-index: 2;
+}
+
+.stylish-app-bg-thing {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+
+	height: 25rem;
+	width: 100%;
+
+	background: linear-gradient(170deg, rgba(98,220,240,0.5) 0%, rgba(28,0,78,0) 50%);
+}
+
+.app-home-login-header {
+	margin-bottom: 1.5rem;
+}
+
+.app-home-login-buttons {
+	display: flex;
+	flex-direction: row;
+}
+
+.app-home-login-btn {
+	display: flex;
+
+	padding: .5rem .75rem;
+	background: gray;
+	border-radius: .25rem;
+	color: white;
+	text-decoration: none;
+
+	transition: all .25s;
+
+	margin: 0 auto;
+	margin-bottom: .5rem;
+}
+
+.app-home-login-btn > .iconify {
+	margin-right: .5rem;
+}
+
+.app-home-login-btn-spotify {
+	background: #1db954;
+}
+
+.app-home-login-btn-spotify:focus {
+	background: #189042;
+}
+
+.app-home-login-btn-deezer {
+	background-color: #FEAA2D;
+	background-image: linear-gradient(90deg, rgba(240,98,98,1), rgba(255,255,255,0));
+}
+
+.app-home-login-btn-deezer:focus {
+	background-color: #963CAA;
+}
+
+@media (max-width: 425px) {
+	.app-home-login-buttons {
+		flex-direction: column;
+	}
+
+	.app-home-login-btn {
+		width: 12rem;
+		justify-content: center;
+	}
+}
