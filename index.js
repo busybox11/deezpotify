@@ -14,6 +14,8 @@ const app = express()
 const server = https.createServer({key: key, cert: cert }, app)
 const io = require('socket.io')(server)
 
+let clientsHandler = require('./clients')
+
 let clients = {}
 
 function getCookie(cookiestr, name) {
@@ -58,6 +60,7 @@ io.on('connection', (socket) => {
 	let id = socket.id
 	let cookie = socket.handshake.headers.cookie
 	let platform = getCookie(cookie, 'platform')
+	let client
 
 	if (platform == "spotify") {
 		clients[id] = {
@@ -66,7 +69,19 @@ io.on('connection', (socket) => {
 			time: getCookie(cookie, 'time'),
 			platform: platform
 		}
-		console.log(clients)
+
+		var credentials = {
+			token: getCookie(cookie, 'token'),
+			refresh: getCookie(cookie, 'refresh')
+		}
+		clientsHandler.login(platform, credentials).then( function(client) {
+			client.getMe()
+			.then(function(data) {
+				clients[id]['user'] = data.body
+			}, function(err) {
+				console.log('Something went wrong!', err);
+			});
+		})
 	}
 
 	io.emit('clients', JSON.stringify({type: 'newClient', id: socket.id}))

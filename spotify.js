@@ -1,8 +1,8 @@
-let SpotifyWebApi = require('spotify-web-api-node');
+let SpotifyWebApi = require('spotify-web-api-node')
 require('dotenv').config()
 
 let scopes = ['user-read-private', 'user-read-email'],
-	state = 'login';
+	state = 'login'
 
 function getLoginURL() {
 	let spotifyApi = new SpotifyWebApi({
@@ -32,7 +32,7 @@ function getTokens(code) {
 				'refresh': data.body['refresh_token']
 			})
 		},	function(err) {
-			return reject('Something went wrong!', err);
+			return reject('Something went wrong!', err)
 		})
 	})
 }
