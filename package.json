@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/busybox11/deezpotify/issues"
   },
-  "homepage": "https://github.com/busybox11/deezpotify#readme"
+  "homepage": "https://github.com/busybox11/deezpotify#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

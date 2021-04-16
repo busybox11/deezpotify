@@ -1,0 +1,16 @@
+{
+	"name": "Deezpotify",
+	"short_name": "deezpotify",
+	"description": "Listen music together with Deezer and Spotify",
+	"icons": [
+		{
+			"src": "/files/splash-screen.webp",
+			"sizes": "512x512",
+			"type": "image/webp"
+		}
+	],
+	"start_url": "/",
+	"display": "fullscreen",
+	"theme_color": "#764ABC",
+	"background_color": "#764ABC"
+}
