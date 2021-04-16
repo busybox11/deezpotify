@@ -14,6 +14,14 @@ const app = express()
 const server = https.createServer({key: key, cert: cert }, app)
 const io = require('socket.io')(server)
 
+let clients = {}
+
+function getCookie(cookiestr, name) {
+	const value = `; ${cookiestr}`;
+	const parts = value.split(`; ${name}=`);
+	if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 app.use((req, res, next) => {
 	if (!req.secure) {
 		return res.redirect('https://' + req.headers.host + req.url)
@@ -39,20 +47,36 @@ app.get('/auth/spotify', function(req, res) {
 			res.cookie('refresh', data.refresh)
 			res.cookie('token', data.token)
 			res.cookie('time', Date.now() + data.expires)
+			res.cookie('platform', 'spotify')
 
 			res.redirect('/app')
 		})
 	}
 })
 
-io.on('connection', (socket) =>{
-	console.log(`Connected to client ${socket.id}`)
-	io.emit('clients', JSON.stringify({type: "newClient"}))
-})
+io.on('connection', (socket) => {
+	let id = socket.id
+	let cookie = socket.handshake.headers.cookie
+	let platform = getCookie(cookie, 'platform')
 
-socket.on("disconnect", (reason) => {
-	console.log('Client disconnected')
-});
+	if (platform == "spotify") {
+		clients[id] = {
+			token: getCookie(cookie, 'token'),
+			refresh: getCookie(cookie, 'refresh'),
+			time: getCookie(cookie, 'time'),
+			platform: platform
+		}
+		console.log(clients)
+	}
+
+	io.emit('clients', JSON.stringify({type: 'newClient', id: socket.id}))
+
+	socket.on('disconnect', (reason) => {
+		console.log(`Client ${id} disconnected`)
+		delete clients[id]
+		console.log(clients)
+	})
+})
 
 app.listen(httpPort, function () {
 	console.log(`Listening on port ${httpPort}!`)
