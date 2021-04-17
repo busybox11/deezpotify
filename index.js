@@ -62,6 +62,19 @@ io.on('connection', (socket) => {
 	let platform = getCookie(cookie, 'platform')
 	let client
 
+	console.log(`New client ${id}`)
+
+	let wsClients = {}
+	Object.keys(clients).forEach(function(key) {
+		wsClients[key] = {
+			profilePic: clients[key].user.images[0].url,
+			name: clients[key].user.display_name,
+			user_id: clients[key].user.id
+		}
+		console.log(wsClients[key])
+	});
+	io.emit('clients', JSON.stringify({type: 'newClient', id: socket.id, clients: wsClients}))
+
 	if (platform == "spotify") {
 		clients[id] = {
 			token: getCookie(cookie, 'token'),
@@ -83,8 +96,6 @@ io.on('connection', (socket) => {
 			});
 		})
 	}
-
-	io.emit('clients', JSON.stringify({type: 'newClient', id: socket.id}))
 
 	socket.on('disconnect', (reason) => {
 		console.log(`Client ${id} disconnected`)
