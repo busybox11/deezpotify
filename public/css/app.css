@@ -134,6 +134,12 @@ html, body {
 
 	width: 11rem;
 	padding-right: 1rem;
+
+	transition: transform .15s;
+}
+
+.app-home-item:active {
+	transform: scale(0.95) !important;
 }
 
 .app-home-item-img {

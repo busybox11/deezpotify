@@ -15,6 +15,10 @@
 
 #topnav.scrolled { background: #2A2A2A; }
 
+.navbar-icons {
+	transition: transform .15s;
+}
+
 #navbar-title {
 	margin-right: auto;
 	font-size: 1.5rem;
@@ -68,9 +72,15 @@
 	padding: .5rem .25rem;
 
 	color: #bdbdbd;
-	transition: color .15s;
+	transition: color .15s transform .15s;
 
 	text-align: center;
+}
+
+.bottom-nav-item:active,
+.playing-nav-icon:active,
+.navbar-icons:active {
+	transform: scale(0.95) !important;
 }
 
 .bottom-nav-item.selected { color: white; }
@@ -126,6 +136,8 @@
 .playing-nav-icon {
 	margin: auto .5rem;
 	font-size: 2rem;
+
+	transition: transform .15s;
 }
 
 .playing-nav-saved {
