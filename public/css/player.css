@@ -21,7 +21,7 @@
 #player-cover {
 	width: 100%;
 
-	margin-bottom: 2rem;
+	margin-bottom: auto;
 
 	box-shadow: 0px 4px 8px 4px #00000050;
 }
@@ -29,8 +29,6 @@
 #player-track-info {
 	display: flex;
 	align-items: center;
-
-	margin-bottom: auto;
 }
 
 #player-track-artist {
@@ -48,6 +46,15 @@
 
 .player-track-info-saved {
 	color: #1db954;
+}
+
+#player-position-time-div {
+	display: flex;
+    justify-content: space-between;
+    margin-top: -0.5rem;
+    font-size: .8rem;
+    color: #BBB;
+    font-variant: tabular-nums;
 }
 
 #player-controls {
