@@ -131,6 +131,7 @@ io.on('connection', async (socket) => {
 			setInterval(async function() {
 				try {
 					let token = await client.refreshAccessToken()
+					client.setAccessToken(token.body['access_token'])
 					io.emit('token', JSON.stringify({
 						type: 'refreshedToken',
 						token: token.body['access_token']
@@ -148,8 +149,6 @@ io.on('connection', async (socket) => {
 						sendPlayingState()
 					}
 				})
-
-				sendPlayingState()
 			} catch(e) { console.log(e) }
 		})
 	}

@@ -11,6 +11,19 @@ let colorThief = new ColorThief();
 
 document.addEventListener('DOMContentLoaded', init, false)
 
+function render(state) {
+	if (state) {
+		switch (state.type) {
+			case "home":
+				closePlayingTrack()
+				break
+			case "player":
+				openPlayingTrack()
+				break
+		}
+	}
+}
+
 function init() {
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('/js/service-worker.js')
@@ -20,13 +33,19 @@ function init() {
 			console.error('Service worker not registered -->', err)
 		})
 	}
+
+	if (history.state == null || history.state.type == "player") {
+		window.history.replaceState({type: "home"}, "Home - Deezpotify", "?")
+	}
+
+	render(history.state)
 }
 
 const socket = io();
 
 socket.on('clients', function(msg){
 	console.log(msg)
-});
+})
 
 document.onscroll = function(data) {
 	if (window.pageYOffset > 100) {
@@ -39,6 +58,7 @@ document.onscroll = function(data) {
 }
 
 function openPlayingTrack() {
+	window.history.pushState({type: 'player'}, "Player - Deezpotify", "?type=player")
 	scroll = body.scrollTop
 	body.scrollTop = 0
 	body.style.overflow = "hidden"
@@ -50,7 +70,7 @@ function openPlayingTrack() {
 	topNav.style.background = "linear-gradient(180deg, #00000050, transparent)"
 	contextNavbar.style.visibility = "visible"
 	contextNavbar.style.opacity = "1"
-	document.querySelector('#topnav-left-icon').outerHTML = '<i id="topnav-left-icon" class="iconify navbar-icons navbar-menu-icon" data-icon="mdi-chevron-down" onclick="closePlayingTrack()"></i>'
+	document.querySelector('#topnav-left-icon').outerHTML = '<i id="topnav-left-icon" class="iconify navbar-icons navbar-menu-icon" data-icon="mdi-chevron-down" onclick="window.history.back()"></i>'
 }
 
 function closePlayingTrack() {
@@ -76,5 +96,9 @@ $(document).ready(function() {
 		verticalClass: "rangeslider--vertical",
 		fillClass: "rangeslider__fill",
 		handleClass: "rangeslider__handle"
-	});
-});
+	})
+})
+
+window.onpopstate = function (event) {
+	render(event.state)
+}
