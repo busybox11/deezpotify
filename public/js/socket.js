@@ -62,13 +62,11 @@ function setPlayingState(state) {
 		color = colorThief.getColor(Player.coverImg)
 		Player.player.style.backgroundColor = `rgb(${color[0]},${color[1]},${color[2]})`
 	}
-
-	console.log(state.context)
 }
 
 socket.on('playing', function(msg) {
 	data = JSON.parse(msg)
-
+	
 	switch (data.type) {
 		case "currentPlaybackState":
 			setPlayingState(data.data)

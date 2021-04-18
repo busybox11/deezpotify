@@ -143,6 +143,8 @@
 	height: 100%;
 
 	background: #FFFFFF;
+
+	transition: width linear 1s;
 }
 
 .rangeslider, .rangeslider__fill {
@@ -154,7 +156,7 @@
 	touch-action: pan-y;
 	-ms-touch-action: pan-y;
 
-	transition: transform ease-out .1s;
+	transition: transform ease-out .1s, left linear 1s;
 }
 
 .rangeslider__handle:active,
