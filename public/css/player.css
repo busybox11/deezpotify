@@ -47,6 +47,12 @@
 .player-controls-icon {
 	font-size: 3rem;
 	padding: .5rem;
+
+	transition: transform .15s;
+}
+
+.player-controls-icon:active {
+	transform: scale(0.95) !important;
 }
 
 #player-controls-playpause {
