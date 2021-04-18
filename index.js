@@ -121,12 +121,22 @@ io.on('connection', async (socket) => {
 						io.emit('playing', JSON.stringify({
 							type: 'periodicPlaybackState',
 							data: ((diff.item != undefined) ? playbackState.body : diff)
-						}));
+						}))
 
 						lastState = playbackState.body
 					}
 				} catch(e) { console.log(e) }
 			}, 1000)
+
+			setInterval(async function() {
+				try {
+					let token = await client.refreshAccessToken()
+					io.emit('token', JSON.stringify({
+						type: 'refreshedToken',
+						token: token.body['access_token']
+					}))
+				} catch(e) { console.log(e) }
+			}, 3540000) // Refresh token every 59 minutes
 
 			try {
 				let user = await client.getMe()

@@ -66,7 +66,7 @@ function setPlayingState(state) {
 
 socket.on('playing', function(msg) {
 	data = JSON.parse(msg)
-	
+
 	switch (data.type) {
 		case "currentPlaybackState":
 			setPlayingState(data.data)
@@ -83,6 +83,16 @@ socket.on('playing', function(msg) {
 
 				$('#player-position-range').val(timeNow.msTime * 100 / timeTotal.msTime).change()
 			}
+			break
+	}
+})
+
+socket.on('token', function(msg) {
+	data = JSON.parse(msg)
+	
+	switch (data.type) {
+		case "refreshedToken":
+			// TODO: Use session cookie
 			break
 	}
 });
