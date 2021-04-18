@@ -21,7 +21,7 @@ let scopes = ['playlist-modify-private',
 
 function getLoginURL() {
 	let spotifyApi = new SpotifyWebApi({
-		redirectUri: process.env.SPOTIFY_URI_DEV,
+		redirectUri: process.env.SPOTIFY_URI_PROD,
 		clientId: process.env.SPOTIFY_CLIENT_ID
 	})
 
@@ -33,7 +33,7 @@ function getTokens(code) {
 		let spotifyApi = new SpotifyWebApi({
 			clientId: process.env.SPOTIFY_CLIENT_ID,
 			clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-			redirectUri: process.env.SPOTIFY_URI_DEV
+			redirectUri: process.env.SPOTIFY_URI_PROD
 		})
 
 		spotifyApi.authorizationCodeGrant(code).then(function(data) {
