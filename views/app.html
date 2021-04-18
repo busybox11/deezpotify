@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<nav id="topnav">
-			<i class="iconify navbar-icons navbar-menu-icon" data-icon="mdi-menu"></i>
+			<i id="topnav-left-icon" class="iconify navbar-icons navbar-menu-icon" data-icon="mdi-menu"></i>
 			<span id="navbar-title"></span>
 			<div id="navbar-client-selected">
 				<img id="navbar-client-selected-img" src="https://i.scdn.co/image/ab6775700000ee85712e30420c1033db32448e6a">
@@ -93,10 +93,12 @@
 		</div>
 		<div id="bottom-navs">
 			<div id="playing">
-				<img id="playing-img" src="https://i.scdn.co/image/ab67616d00001e028c39980f387f7ab0b5e85c80">
-				<div id="playing-track-info">
-					<span id="playing-track-name">Bored</span>
-					<span id="playing-track-artist">Thomas Headon</span>
+				<div id="playing-track" onclick="openPlayingTrack()">
+					<img id="playing-img" src="https://i.scdn.co/image/ab67616d00001e028c39980f387f7ab0b5e85c80">
+					<div id="playing-track-info">
+						<span id="playing-track-name">Bored</span>
+						<span id="playing-track-artist">Thomas Headon</span>
+					</div>
 				</div>
 				<i class="iconify playing-nav-icon playing-nav-saved" id="playing-nav-save" data-icon="mdi-heart"></i>
 				<i class="iconify playing-nav-icon" id="playing-nav-playpause" data-icon="mdi-pause"></i>

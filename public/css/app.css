@@ -19,6 +19,8 @@ html, body {
 	padding-top: 3rem;
 
 	z-index: 2;
+
+	transition: opacity .5s;
 }
 
 .stylish-app-bg-thing {

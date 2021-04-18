@@ -1,4 +1,6 @@
-let topnav = document.getElementById('topnav')
+let app = document.getElementById('app')
+let topNav = document.getElementById('topnav')
+let bottomNavs = document.getElementById('bottom-navs')
 
 document.addEventListener('DOMContentLoaded', init, false)
 
@@ -15,10 +17,22 @@ function init() {
 
 document.onscroll = function(data) {
 	if (window.pageYOffset > 100) {
-		topnav.classList.add('scrolled')
+		topNav.classList.add('scrolled')
 	} else {
 		try {
 			topnav.classList.remove('scrolled')
 		} catch(e) {}
 	}
+}
+
+function openPlayingTrack() {
+	app.style.opacity = "0"
+	bottomNavs.style.bottom = "-10rem"
+	document.querySelector('#topnav-left-icon').outerHTML = '<i id="topnav-left-icon" class="iconify navbar-icons navbar-menu-icon" data-icon="mdi-chevron-down" onclick="closePlayingTrack()"></i>'
+}
+
+function closePlayingTrack() {
+	app.style.opacity = "1"
+	bottomNavs.style.bottom = "0"
+	document.querySelector('#topnav-left-icon').outerHTML = '<i id="topnav-left-icon" class="iconify navbar-icons navbar-menu-icon" data-icon="mdi-menu"></i>'
 }

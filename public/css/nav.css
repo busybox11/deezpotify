@@ -6,6 +6,7 @@
 
 	display: flex;
     align-items: center;
+    z-index: 9;
 
 	padding: .75rem 1rem;
 
@@ -20,7 +21,7 @@
 }
 
 .navbar-menu-icon {
-	font-size: 2rem;
+	font-size: 1.5rem;
 	margin-right: .5rem;
 }
 
@@ -50,6 +51,8 @@
 #bottom-navs {
 	position: sticky;
 	bottom: 0;
+
+	transition: all ease-in-out .5s;
 }
 
 #bottomnav {
@@ -85,8 +88,15 @@
 	background: #1A1A1A;
 	display: flex;
 
+	padding-right: .5rem;
+
 	border-bottom: 1px solid #FFFFFF30;
 	border-top: 1px solid #FFFFFF30;
+}
+
+#playing-track {
+	display: flex;
+	width: 100%;
 }
 
 #playing-img {
@@ -114,8 +124,8 @@
 }
 
 .playing-nav-icon {
-	margin: auto 1rem auto 0;
-	font-size: 3rem;
+	margin: auto .5rem;
+	font-size: 2rem;
 }
 
 .playing-nav-saved {
