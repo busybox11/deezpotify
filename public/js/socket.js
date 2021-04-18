@@ -62,6 +62,8 @@ function setPlayingState(state) {
 		color = colorThief.getColor(Player.coverImg)
 		Player.player.style.backgroundColor = `rgb(${color[0]},${color[1]},${color[2]})`
 	}
+
+	console.log(state.context)
 }
 
 socket.on('playing', function(msg) {

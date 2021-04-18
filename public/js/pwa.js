@@ -3,6 +3,7 @@ let app = document.getElementById('app')
 let player = document.getElementById('player')
 let topNav = document.getElementById('topnav')
 let bottomNavs = document.getElementById('bottom-navs')
+let contextNavbar = document.getElementById('navbar-playing-context')
 
 let scrollPos
 
@@ -47,6 +48,8 @@ function openPlayingTrack() {
 	player.style.zIndex = "2"
 	bottomNavs.style.bottom = "-10rem"
 	topNav.style.background = "linear-gradient(180deg, #00000050, transparent)"
+	contextNavbar.style.visibility = "visible"
+	contextNavbar.style.opacity = "1"
 	document.querySelector('#topnav-left-icon').outerHTML = '<i id="topnav-left-icon" class="iconify navbar-icons navbar-menu-icon" data-icon="mdi-chevron-down" onclick="closePlayingTrack()"></i>'
 }
 
@@ -59,6 +62,8 @@ function closePlayingTrack() {
 	player.style.zIndex = "-2"
 	bottomNavs.style.bottom = "0"
 	topNav.style.background = ""
+	contextNavbar.style.opacity = "0"
+	contextNavbar.style.visibility = "hidden"
 	document.querySelector('#topnav-left-icon').outerHTML = '<i id="topnav-left-icon" class="iconify navbar-icons navbar-menu-icon" data-icon="mdi-menu"></i>'
 }
 
