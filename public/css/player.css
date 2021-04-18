@@ -11,12 +11,12 @@
 	display: flex;
 	flex-direction: column;
 
-	background-image: linear-gradient(rgb(255 255 255 / 0%), rgb(0 0 0));
+	background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 1));
 	background-color: rgb(41,91,99);
 	opacity: 0;
 	z-index: -2;
 
-	transition: opacity .5s, background-color 1s;
+	transition: opacity .5s, background-color 2s;
 }
 
 #player-cover {
@@ -51,19 +51,18 @@
 
 #player-position-time-div {
 	display: flex;
-    justify-content: space-between;
-    margin-top: -0.5rem;
-    font-size: .8rem;
-    color: #BBB;
-    font-variant: tabular-nums;
+	justify-content: space-between;
+	margin-top: -0.5rem;
+	font-size: .8rem;
+	color: #BBB;
+	font-variant: tabular-nums;
 }
 
 #player-controls {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 
-	margin: 1rem 0;
+	margin: 1rem -.5rem;
 }
 
 .player-controls-icon {
@@ -73,11 +72,25 @@
 	transition: transform .15s;
 }
 
+#player-controls-previous {
+	margin-left: auto;
+}
+
 #player-controls-playpause {
 	background: white;
 	color: black;
 	border-radius: 100%;
-	font-size: 3.5rem;
+	font-size: 4.5rem;
+	padding: .75rem;
+	margin: 0 1.5rem;
+}
+
+#player-controls-next {
+	margin-right: auto;
+}
+
+#player-device-controls {
+	margin: 0 -.5rem;
 }
 
 #player-device-controls,
@@ -141,7 +154,7 @@
 .rangeslider__handle:active,
 .rangeslider__handle:focus,
 .rangeslider__handle:focus-within {
-    transform: scale(1.3);
+	transform: scale(1.3);
 }
 
 .rangeslider__handle {
