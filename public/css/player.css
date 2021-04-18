@@ -55,7 +55,7 @@
 	justify-content: space-between;
 	align-items: center;
 
-	margin: 2rem 0 1rem 0;
+	margin: 1rem 0;
 }
 
 .player-controls-icon {
@@ -97,4 +97,52 @@
 
 #player-device-controls-active-icon {
 	margin-right: .25rem;
+}
+
+.rangeslider {
+	position: relative;
+
+	background: #999999;
+}
+
+.rangeslider.rangeslider--horizontal {
+	height: 4px;
+	width: 100%;
+	margin: 1rem 0;
+}
+
+.rangeslider__fill {
+	position: absolute;
+	height: 100%;
+
+	background: #FFFFFF;
+}
+
+.rangeslider, .rangeslider__fill {
+	border-radius: 999px;
+}
+
+.rangeslider--horizontal .rangeslider__handle {
+	top: -4px;
+	touch-action: pan-y;
+	-ms-touch-action: pan-y;
+
+	transition: transform ease-out .1s;
+}
+
+.rangeslider__handle:active,
+.rangeslider__handle:focus,
+.rangeslider__handle:focus-within {
+    transform: scale(1.3);
+}
+
+.rangeslider__handle {
+	background: #FFFFFF;
+	display: inline-block;
+
+	position: absolute;
+	width: 12px;
+	height: 12px;
+
+	border-radius: 50%;
 }

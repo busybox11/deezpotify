@@ -4,7 +4,7 @@ let player = document.getElementById('player')
 let topNav = document.getElementById('topnav')
 let bottomNavs = document.getElementById('bottom-navs')
 
-let scrollPos;
+let scrollPos
 
 document.addEventListener('DOMContentLoaded', init, false)
 
@@ -51,3 +51,15 @@ function closePlayingTrack() {
 	bottomNavs.style.bottom = "0"
 	document.querySelector('#topnav-left-icon').outerHTML = '<i id="topnav-left-icon" class="iconify navbar-icons navbar-menu-icon" data-icon="mdi-menu"></i>'
 }
+
+$(document).ready(function() {
+	$("input[type=range]").rangeslider({
+		polyfill: false,
+		rangeClass: "rangeslider",
+		disabledClass: "rangeslider--disabled",
+		horizontalClass: "rangeslider--horizontal",
+		verticalClass: "rangeslider--vertical",
+		fillClass: "rangeslider__fill",
+		handleClass: "rangeslider__handle"
+	});
+});

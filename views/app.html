@@ -37,6 +37,7 @@
 				<i class="iconify player-track-info-saved" id="playing-track-info-save" data-icon="mdi-heart"></i>
 			</div>
 
+			<input id="player-position-range" type="range">
 			<div id="player-controls">
 				<i id="player-controls-queue" class="iconify player-controls-icon" data-icon="mdi-playlist-music"></i>
 				<i id="player-controls-previous" class="iconify player-controls-icon" data-icon="mdi-skip-previous"></i>
@@ -135,9 +136,12 @@
 				<div class="bottom-nav-item"><i class="iconify bottom-nav-icon" data-icon="mdi-music-box-multiple"></i><br><span>Library</span></div>
 			</div>
 		</div>
+
+		<!-- JCF -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.3/rangeslider.min.js" crossorigin="anonymous"></script>
+
 		<script src="/socket.io/socket.io.js"></script>
-		<script src="/js/pwa.js"></script>
-		<script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
 		<script>
 			const socket = io();
 
@@ -145,5 +149,9 @@
        			console.log(msg)
     		});
 		</script>
+
+		<script src="//code.iconify.design/1/1.0.6/iconify.min.js" crossorigin="anonymous"></script>
+
+		<script src="/js/pwa.js"></script>
 	</body>
 </html>
