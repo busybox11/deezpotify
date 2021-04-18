@@ -56,6 +56,8 @@ function setPlayingState(state) {
 	Player.timeTotal.innerHTML         = Track.timeTotal
 	Player.timeTotal.msTime            = state.item.duration_ms
 
+	Player.deviceName.innerHTML        = state.device.name
+
 	Player.coverImg.onload = function() {
 		color = colorThief.getColor(Player.coverImg)
 		Player.player.style.backgroundColor = `rgb(${color[0]},${color[1]},${color[2]})`
