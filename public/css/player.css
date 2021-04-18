@@ -1,12 +1,57 @@
 #player {
 	height: 100%;
 	width: 100%;
+
+	padding: 5rem 2rem 3rem 2rem;
+
 	position: absolute;
 	top: 0;
 	left: 0;
 
+	display: flex;
+	flex-direction: column;
+
 	background: linear-gradient(180deg, rgba(41,91,99,1) 0%, rgba(15,31,33,1) 100%);
 	opacity: 0;
+	z-index: -2;
 
 	transition: opacity .5s;
+}
+
+#player-cover {
+	width: 100%;
+
+	margin-bottom: 2rem;
+
+	box-shadow: 0px 4px 8px 4px #00000050;
+}
+
+#player-track-info {
+	margin-bottom: auto;
+}
+
+#player-track-artist {
+	color: #CCCCCC;
+
+	font-weight: normal;
+}
+
+#player-controls {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	margin-top: 2rem;
+}
+
+.player-controls-icon {
+	font-size: 3rem;
+	padding: .5rem;
+}
+
+#player-controls-playpause {
+	background: white;
+	color: black;
+	border-radius: 100%;
+	font-size: 3.5rem;
 }
