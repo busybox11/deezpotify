@@ -27,11 +27,14 @@
 			</div>
 		</nav>
 		<div id="player">
-			<img id="player-cover" src="https://i.scdn.co/image/ab67616d00001e028c39980f387f7ab0b5e85c80">
+			<img id="player-cover" src="https://i.scdn.co/image/ab67616d0000b2738c39980f387f7ab0b5e85c80">
 
 			<div id="player-track-info">
-				<h1 id="player-track-name">Bored</h1>
-				<h3 id="player-track-artist">Thomas Headon</h3>
+				<div class="w-full">
+					<h1 id="player-track-name">Bored</h1>
+					<h3 id="player-track-artist">Thomas Headon</h3>
+				</div>
+				<i class="iconify player-track-info-saved" id="playing-track-info-save" data-icon="mdi-heart"></i>
 			</div>
 
 			<div id="player-controls">
@@ -40,6 +43,12 @@
 				<i id="player-controls-playpause" class="iconify player-controls-icon" data-icon="mdi-pause"></i>
 				<i id="player-controls-next" class="iconify player-controls-icon" data-icon="mdi-skip-next"></i>
 				<i id="player-controls-shuffle" class="iconify player-controls-icon" data-icon="mdi-shuffle"></i>
+			</div>
+			<div id="player-device-controls">
+				<div id="player-device-controls-active">
+					<i id="player-device-controls-active-icon" class="iconify player-device-controls-icon" data-icon="mdi-speaker-wireless"></i>
+					<span id="player-device-controls-active-name">pibox</span>
+				</div>
 			</div>
 		</div>
 		<div id="app">
@@ -111,7 +120,7 @@
 		<div id="bottom-navs">
 			<div id="playing">
 				<div id="playing-track" onclick="openPlayingTrack()">
-					<img id="playing-img" src="https://i.scdn.co/image/ab67616d00001e028c39980f387f7ab0b5e85c80">
+					<img id="playing-img" src="https://i.scdn.co/image/ab67616d0000b2738c39980f387f7ab0b5e85c80">
 					<div id="playing-track-info">
 						<span id="playing-track-name">Bored</span>
 						<span id="playing-track-artist">Thomas Headon</span>

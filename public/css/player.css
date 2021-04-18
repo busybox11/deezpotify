@@ -4,7 +4,7 @@
 
 	padding: 5rem 2rem 3rem 2rem;
 
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 
@@ -27,6 +27,9 @@
 }
 
 #player-track-info {
+	display: flex;
+	align-items: center;
+
 	margin-bottom: auto;
 }
 
@@ -36,12 +39,23 @@
 	font-weight: normal;
 }
 
+#playing-track-info-save {
+	font-size: 2rem;
+	margin-left: 1rem;
+
+	transition: color .25s transform .15s;
+}
+
+.player-track-info-saved {
+	color: #1db954;
+}
+
 #player-controls {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 
-	margin-top: 2rem;
+	margin: 2rem 0 1rem 0;
 }
 
 .player-controls-icon {
@@ -51,13 +65,36 @@
 	transition: transform .15s;
 }
 
-.player-controls-icon:active {
-	transform: scale(0.95) !important;
-}
-
 #player-controls-playpause {
 	background: white;
 	color: black;
 	border-radius: 100%;
 	font-size: 3.5rem;
+}
+
+#player-device-controls,
+#player-device-controls-active {
+	display: flex;
+	align-items: center;
+}
+
+.player-device-controls-icon {
+	padding: .5rem;
+	font-size: 2.5rem;
+}
+
+#player-device-controls-active {
+	transition: transform .15s;
+
+	color: #1db954;
+}
+
+.player-controls-icon:active,
+#player-device-controls-active:active,
+#playing-track-info-save:active {
+	transform: scale(0.95) !important;
+}
+
+#player-device-controls-active-icon {
+	margin-right: .25rem;
 }
