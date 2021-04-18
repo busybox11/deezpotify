@@ -1,7 +1,22 @@
 let SpotifyWebApi = require('spotify-web-api-node')
 require('dotenv').config()
 
-let scopes = ['user-read-private', 'user-read-email'],
+let scopes = ['playlist-modify-private',
+              'playlist-read-private',
+              'playlist-modify-public',
+              'playlist-read-collaborative',
+              'user-read-playback-state',
+              'user-modify-playback-state',
+              'user-read-currently-playing',
+              'user-library-modify',
+              'user-library-read',
+              'user-read-playback-position',
+              'user-read-recently-played',
+              'user-top-read',
+              'streaming',
+              'user-follow-modify',
+              'user-follow-read'
+              ];
 	state = 'login'
 
 function getLoginURL() {

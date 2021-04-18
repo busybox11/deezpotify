@@ -27,7 +27,7 @@
 			</div>
 		</nav>
 		<div id="player">
-			<img id="player-cover" src="https://i.scdn.co/image/ab67616d0000b2738c39980f387f7ab0b5e85c80">
+			<img id="player-cover" src="https://i.scdn.co/image/ab67616d0000b2738c39980f387f7ab0b5e85c80" crossorigin="anonymous">
 
 			<div id="player-track-info">
 				<div class="w-full">
@@ -63,7 +63,7 @@
 				<h1>Welcome back</h1>
 				<span id="app-home-clients" class="text-muted">
 					<div id="app-home-clients-imgs">
-						<img class="app-home-client-img" src="https://i.scdn.co/image/ab6775700000ee85712e30420c1033db32448e6a">
+						<img class="app-home-client-img" src="https://i.scdn.co/image/ab6775700000ee85712e30420c1033db32448e6a" crossorigin="anonymous">
 					</div>1 client connected
 				</span>
 			</div>
@@ -141,21 +141,16 @@
 			</div>
 		</div>
 
-		<!-- JCF -->
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.3/rangeslider.min.js" crossorigin="anonymous"></script>
 
-		<script src="/socket.io/socket.io.js"></script>
-		<script>
-			const socket = io();
-
-			socket.on('clients', function(msg){
-       			console.log(msg)
-    		});
-		</script>
+		<script src="/js/color-thief.min.js"></script>
 
 		<script src="//code.iconify.design/1/1.0.6/iconify.min.js" crossorigin="anonymous"></script>
 
+		<script src="/socket.io/socket.io.js"></script>
 		<script src="/js/pwa.js"></script>
+		<script src="/js/socket.js"></script>
 	</body>
 </html>

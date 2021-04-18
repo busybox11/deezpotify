@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const fs = require('fs')
 const https = require('https')
+const _ = require('lodash')
 
 let spotifyModule = require('./spotify')
 
@@ -17,6 +18,17 @@ const io = require('socket.io')(server)
 let clientsHandler = require('./clients')
 
 let clients = {}
+
+function difference(object, base) {
+	function changes(object, base) {
+		return _.transform(object, function(result, value, key) {
+			if (!_.isEqual(value, base[key])) {
+				result[key] = (_.isObject(value) && _.isObject(base[key])) ? changes(value, base[key]) : value;
+			}
+		});
+	}
+	return changes(object, base);
+}
 
 function getCookie(cookiestr, name) {
 	const value = `; ${cookiestr}`;
@@ -56,7 +68,7 @@ app.get('/auth/spotify', function(req, res) {
 	}
 })
 
-io.on('connection', (socket) => {
+io.on('connection', async (socket) => {
 	let id = socket.id
 	let cookie = socket.handshake.headers.cookie
 	let platform = getCookie(cookie, 'platform')
@@ -87,13 +99,48 @@ io.on('connection', (socket) => {
 			token: getCookie(cookie, 'token'),
 			refresh: getCookie(cookie, 'refresh')
 		}
-		clientsHandler.login(platform, credentials).then( function(client) {
-			client.getMe()
-			.then(function(data) {
-				clients[id]['user'] = data.body
-			}, function(err) {
-				console.log('Something went wrong!', err);
-			});
+		clientsHandler.login(platform, credentials).then(async (client) => {
+			let lastState = {}
+
+			async function sendPlayingState() {
+				try {
+					let playbackState = await client.getMyCurrentPlaybackState()
+					io.emit('playing', JSON.stringify({
+						type: 'currentPlaybackState',
+						data: playbackState.body
+					}))
+				} catch(e) { console.log(e) }
+			}
+
+			setInterval(async function() {
+				try {
+					let playbackState = await client.getMyCurrentPlaybackState()
+					diff = difference(playbackState.body, lastState)
+
+					if (diff != {}) {
+						io.emit('playing', JSON.stringify({
+							type: 'periodicPlaybackState',
+							data: ((diff.item != undefined) ? playbackState.body : diff)
+						}));
+
+						lastState = playbackState.body
+					}
+				} catch(e) { console.log(e) }
+			}, 2000)
+
+			try {
+				let user = await client.getMe()
+				clients[id]['user'] = user.body
+
+				socket.on('playing', async (msg) => {
+					data = JSON.parse(msg)
+					if (data.type == "currentPlaybackState") {
+						sendPlayingState()
+					}
+				})
+
+				sendPlayingState()
+			} catch(e) { console.log(e) }
 		})
 	}
 

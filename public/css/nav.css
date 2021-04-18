@@ -72,7 +72,7 @@
 	padding: .5rem .25rem;
 
 	color: #bdbdbd;
-	transition: color .15s transform .15s;
+	transition: color .15s, transform .15s;
 
 	text-align: center;
 }

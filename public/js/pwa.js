@@ -6,6 +6,8 @@ let bottomNavs = document.getElementById('bottom-navs')
 
 let scrollPos
 
+let colorThief = new ColorThief();
+
 document.addEventListener('DOMContentLoaded', init, false)
 
 function init() {
@@ -18,6 +20,12 @@ function init() {
 		})
 	}
 }
+
+const socket = io();
+
+socket.on('clients', function(msg){
+	console.log(msg)
+});
 
 document.onscroll = function(data) {
 	if (window.pageYOffset > 100) {
@@ -38,6 +46,7 @@ function openPlayingTrack() {
 	player.style.opacity = "1"
 	player.style.zIndex = "2"
 	bottomNavs.style.bottom = "-10rem"
+	topNav.style.background = "linear-gradient(180deg, #00000050, transparent)"
 	document.querySelector('#topnav-left-icon').outerHTML = '<i id="topnav-left-icon" class="iconify navbar-icons navbar-menu-icon" data-icon="mdi-chevron-down" onclick="closePlayingTrack()"></i>'
 }
 
@@ -49,6 +58,7 @@ function closePlayingTrack() {
 	player.style.opacity = "0"
 	player.style.zIndex = "-2"
 	bottomNavs.style.bottom = "0"
+	topNav.style.background = ""
 	document.querySelector('#topnav-left-icon').outerHTML = '<i id="topnav-left-icon" class="iconify navbar-icons navbar-menu-icon" data-icon="mdi-menu"></i>'
 }
 
