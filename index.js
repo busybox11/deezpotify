@@ -85,7 +85,7 @@ io.on('connection', async (socket) => {
 		}
 		console.log(wsClients[key])
 	});
-	io.emit('clients', JSON.stringify({type: 'newClient', id: socket.id, clients: wsClients}))
+	socket.emit('clients', JSON.stringify({type: 'newClient', id: socket.id, clients: wsClients}))
 
 	if (platform == "spotify") {
 		clients[id] = {
@@ -105,20 +105,20 @@ io.on('connection', async (socket) => {
 			async function sendPlayingState() {
 				try {
 					let playbackState = await client.getMyCurrentPlaybackState()
-					io.emit('playing', JSON.stringify({
+					socket.emit('playing', JSON.stringify({
 						type: 'currentPlaybackState',
 						data: playbackState.body
 					}))
 				} catch(e) { console.log(e) }
 			}
 
-			setInterval(async function() {
+			let periodicRefresh = async function() {
 				try {
 					let playbackState = await client.getMyCurrentPlaybackState()
 					diff = difference(playbackState.body, lastState)
 
 					if (diff != {}) {
-						io.emit('playing', JSON.stringify({
+						socket.emit('playing', JSON.stringify({
 							type: 'periodicPlaybackState',
 							data: ((diff.item != undefined) ? playbackState.body : diff)
 						}))
@@ -126,18 +126,31 @@ io.on('connection', async (socket) => {
 						lastState = playbackState.body
 					}
 				} catch(e) { console.log(e) }
-			}, 1000)
+			}
+			
+			setInterval(periodicRefresh, 1000)
 
-			setInterval(async function() {
+			let refreshTokenFunc = async function() {
 				try {
 					let token = await client.refreshAccessToken()
 					client.setAccessToken(token.body['access_token'])
-					io.emit('token', JSON.stringify({
+					socket.emit('token', JSON.stringify({
 						type: 'refreshedToken',
 						token: token.body['access_token']
 					}))
 				} catch(e) { console.log(e) }
-			}, 3540000) // Refresh token every 59 minutes
+			}
+			
+			setInterval(refreshTokenFunc, 3540000) // Refresh token every 59 minutes
+
+			socket.on('disconnect', (reason) => {
+				console.log(`Client ${id} disconnected`)
+				clearInterval(periodicRefresh)
+				clearInterval(refreshTokenFunc)
+				delete clients[id]
+				socket.removeAllListeners()
+				socket.disconnect(true)
+			})
 
 			try {
 				let user = await client.getMe()
@@ -152,12 +165,6 @@ io.on('connection', async (socket) => {
 			} catch(e) { console.log(e) }
 		})
 	}
-
-	socket.on('disconnect', (reason) => {
-		console.log(`Client ${id} disconnected`)
-		delete clients[id]
-		console.log(clients)
-	})
 })
 
 app.listen(httpPort, function () {
