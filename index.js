@@ -85,7 +85,7 @@ io.on('connection', async (socket) => {
 		}
 		console.log(wsClients[key])
 	});
-	socket.emit('clients', JSON.stringify({type: 'newClient', id: socket.id, clients: wsClients}))
+	io.emit('clients', JSON.stringify({type: 'newClient', id: socket.id, clients: wsClients}))
 
 	if (platform == "spotify") {
 		clients[id] = {
